@@ -33,17 +33,22 @@ public class HelloController {
     }
 
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/bucketlists/{employeeId}/employeeName/{empName}")
-    public HttpStatus updateEmployee(@PathVariable Integer employeeId, @PathVariable String empName) {
+    @RequestMapping(method = RequestMethod.PUT, value = "/bucketlists/{employeeId}")
+    public HttpStatus updateEmployee(@PathVariable Integer employeeId,@RequestBody EmployeeEntity employeeEntity) {
 
-        return  employeeService.updateEmployeeDetail(employeeId,empName);
+        return  employeeService.updateEmployeeDetail(employeeId,employeeEntity);
 
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/bucketlists/{employeeId}")
-    public void deletEmployee(@PathVariable Integer employeeId) {
-        employeeService.deleteEmployeeId(employeeId);
+    public HttpStatus deletEmployee(@PathVariable Integer employeeId) {
+        return employeeService.deleteEmployeeId(employeeId);
 
+    }
+
+    @GetMapping(value="/bucketlists/getCount/")
+    public long getCount() {
+        return employeeService.getCount();
     }
 
 

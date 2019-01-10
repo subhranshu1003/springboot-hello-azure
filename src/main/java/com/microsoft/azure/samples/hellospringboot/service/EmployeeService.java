@@ -28,31 +28,27 @@ public class EmployeeService {
 		
 	}
 
-	public void deleteEmployeeId(Integer employeeId) {
-	      employeeDao.deleteById(employeeId);
-		
+	public HttpStatus deleteEmployeeId(Integer employeeId) {
+		employeeDao.deleteById(employeeId);
+		return HttpStatus.OK;
 	}
-
-	public HttpStatus updateEmployeeDetail(Integer employeeId, String empName) {
+	public HttpStatus updateEmployeeDetail(Integer employeeId, EmployeeEntity employeeEnt) {
 		   Optional<EmployeeEntity> empEntity=employeeDao.findById(employeeId);
 		   
-		  
-		   if(empEntity!=null && empEntity.isPresent()) {
-			   EmployeeEntity employeeEntity= empEntity.get();
-			   employeeEntity.setId(employeeId);
-			   employeeEntity.setName(empName);
-			   employeeDao.save(employeeEntity);
-			   return HttpStatus.OK;
+		     if(empEntity!=null && empEntity.isPresent()) {
+				 employeeEnt.setId(employeeId);
+				 employeeDao.save(employeeEnt);
+				 return HttpStatus.OK;
 		   }
 		   
 		   else return HttpStatus.NOT_FOUND;
 		
-		   
-		 
-		   
-		
-		 
-		
 	}
+
+	public long getCount() {
+
+		return employeeDao.count();
+	}
+
 
 }
