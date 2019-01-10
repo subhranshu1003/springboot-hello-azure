@@ -14,7 +14,6 @@ import javax.transaction.Transactional;
 
 import com.microsoft.azure.samples.hellospringboot.dao.EmployeeDao;
 import com.microsoft.azure.samples.hellospringboot.entity.EmployeeEntity;
-import com.microsoft.azure.samples.hellospringboot.entity.FileStorageProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
