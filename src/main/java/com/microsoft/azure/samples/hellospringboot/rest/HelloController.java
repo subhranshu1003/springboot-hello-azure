@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "https://demoangular.z21.web.core.windows.net")
 public class HelloController {
 
 
